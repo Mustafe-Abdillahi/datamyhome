@@ -44,9 +44,13 @@ app.use(ErorrHandler);
 // connect mongoose
 
 
-mongoose.connect(process.env.NODE_ENV=="development"? process.env.Mongo_url :process.env.Mongo_url_pro)
-.then(()=>console.log('✅mongoDb is connectedd'))
-.catch((error)=>console.log('❌ mongoDb is not connect'))
+mongoose.connect(
+  process.env.NODE_ENV == "development"
+    ? process.env.Mongo_url
+    : process.env.Mongo_url_pro
+)
+  .then(() => console.log("✅mongoDb is connectedd"))
+  .catch((error) => console.log("❌ mongoDb is not connect"));
 
   const port = process.env.PORT || 3000;
 
