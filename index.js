@@ -43,27 +43,16 @@ app.use(ErorrHandler);
 
 // connect mongoose
 
+const port = process.env.PORT || 3000;
 
-// mongoose.connect(
-//   process.env.NODE_ENV == "development"
-//     ? process.env.MONGO_URL
-//     : process.env.MONGO_URL_PRO
-// )
-//   .then(() => console.log("✅mongoDb is connectedd"))
-//   .catch((error) => console.log("❌ mongoDb is not connect"));
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URL_PRO);
+mongoose.connect(
+  process.env.NODE_ENV == "development"
+    ? process.env.MONGO_URL
+    : process.env.MONGO_URL_PRO
+)
+  .then(() => console.log("✅mongoDb is connectedd"))
+  .catch((error) => console.log("❌ mongoDb is not connect"));
 
-    console.log("✅ MongoDB connected successfully");
-  } catch (error) {
-    console.error("❌ MongoDB connection failed:", error.message);
-  }
-};
-
-connectDB();
-
-  const port = process.env.PORT || 3000;
 
 console.log(port)
 //put morgan here to read the route type
