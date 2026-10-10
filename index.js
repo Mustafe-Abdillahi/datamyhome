@@ -44,13 +44,24 @@ app.use(ErorrHandler);
 // connect mongoose
 
 
-mongoose.connect(
-  process.env.NODE_ENV == "development"
-    ? process.env.MONGO_URL
-    : process.env.MONGO_URL_PRO
-)
-  .then(() => console.log("✅mongoDb is connectedd"))
-  .catch((error) => console.log("❌ mongoDb is not connect"));
+// mongoose.connect(
+//   process.env.NODE_ENV == "development"
+//     ? process.env.MONGO_URL
+//     : process.env.MONGO_URL_PRO
+// )
+//   .then(() => console.log("✅mongoDb is connectedd"))
+//   .catch((error) => console.log("❌ mongoDb is not connect"));
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URL_PRO);
+
+    console.log("✅ MongoDB connected successfully");
+  } catch (error) {
+    console.error("❌ MongoDB connection failed:", error.message);
+  }
+};
+
+connectDB();
 
   const port = process.env.PORT || 3000;
 
