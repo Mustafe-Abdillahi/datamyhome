@@ -46,8 +46,8 @@ app.use(ErorrHandler);
 
 mongoose.connect(
   process.env.NODE_ENV == "development"
-    ? process.env.Mongo_url
-    : process.env.Mongo_url_pro
+    ? process.env.MONGO_URL
+    : process.env.MONGO_URL_PRO
 )
   .then(() => console.log("✅mongoDb is connectedd"))
   .catch((error) => console.log("❌ mongoDb is not connect"));
